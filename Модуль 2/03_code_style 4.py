@@ -14,7 +14,8 @@ print('Результат', z)
 
 # ср. с С++
 
-# if (x < 0) { printf('Меньше нуля\n'); z = x**2 + y; } else { printf('Больше нуля\n'); z = x - y; } printf('Получается\n', z)
+# if (x < 0) { printf('Меньше нуля\n'); z = x**2 + y; } 
+# else { printf('Больше нуля\n'); z = x - y; } printf('Получается\n', z)
 
 # вложенные блоки кода
 
@@ -45,7 +46,7 @@ else:
     z = x + y
 
 # соглашения о стиле кода
-# PEP8 (Python Enhancement Proposal 8) - описан "правильный" стиль программирования в пайтон
+# PEP8 (Python Enhancement Proposal 8) - описан "правильный" стиль программирования в python
 # https://www.python.org/dev/peps/pep-0008/
 
 # 4 пробела на каждый уровень отступа
@@ -95,8 +96,8 @@ count_of_my_pets = 34
 if count_of_my_pets > 10:
     print('I need more space for my pets!')
 
-my_favorite_pets_and_bird = ['cat', 'wolf', 'ostrich']
-if 'lion' in my_favorite_pets_and_bird:
+my_animals = ['cat', 'wolf', 'ostrich']
+if 'lion' in my_animals:
     print('Wow!')
 
 MyFavoritePetsAndBirds = ['cat', 'wolf', 'ostrich']
@@ -105,19 +106,19 @@ MyFavoritePetsAndBirds = ['cat', 'wolf', 'ostrich']
 
 # рекомендации PEP8
 
-# b (одиночная маленькая буква)
+# в (одиночная маленькая буква)
 # B (одиночная заглавная буква)
 # но лучше использовать только такие однобуквенные имена
 #   i j k - для циклов
 #   x y z - для координат
 
 # никогда не используйте в названиях переменных одиночные l, I, O!
-l = 34
-I = 43
-if l > I:
+length = 34
+i = 43
+if length > i:
     print()
-O = 9
-if O > 0:
+number = 9
+if number > 0:
     print()
 
 # lowercase (слово в нижнем регистре)
@@ -135,11 +136,11 @@ if O > 0:
 
 # автоматическое переименование в PyCharm и подсказки - вам не нужно набирать длинные названия переменных
 
-ss = ['cat', 'wolf', 'ostrich']
-if 'lion' in ss:
+animals = ['cat', 'wolf', 'ostrich']
+if 'lion' in animals:
     print('Wow!')
 
-# В каждой уважающей себя компании есть style guide (стайл-гайд) - руководство по стилю написания кода.
+# В каждой уважающей себя компании есть style guide (стиль-гайд) - руководство по стилю написания кода.
 # Практически все они основываются на PEP8, с небольшими исключениями, принятыми в этой команде.
-# Как пример стайл-гайда небольшой компании рекомендую почитать
+# Как пример стиль-гайда небольшой компании рекомендую почитать
 # https://github.com/best-doctor/guides/blob/master/guides/python_styleguide.md
