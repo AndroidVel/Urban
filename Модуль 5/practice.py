@@ -1,10 +1,10 @@
-str
 class Database:
     def __init__(self):
         self.data = {}
 
     def add_user(self, username, password):
         self.data[username] = password
+
 
 class User:
     """
@@ -49,4 +49,3 @@ if __name__ == '__main__':
                 continue
             database.add_user(user.username, user.password)
         print(database.data)
-
