@@ -10,7 +10,6 @@ class User:
 
 class Video:
     time_now: int = 0
-
     def __init__(self, title, duration, adult_mode=False):
         self.title: str = title
         self.duration: int = duration
@@ -21,7 +20,6 @@ class UrTube:
     users = []
     videos = []
     current_user = None
-
     def log_in(self, username, password):
         for i in self.users:
             if username == i.username:
