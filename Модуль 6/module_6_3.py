@@ -12,11 +12,9 @@ class Car:
 class Nissan(Vehicle, Car):
     price = 1500000
     vehicle_type = 'civil_car'
-
-    def __init__(self, horse_power):
-        self.horse_power = horse_power
+    horse_power = 500
 
 
-nissan = Nissan(500)
-print('Vehicle type: ', Nissan.vehicle_type)
-print('Price: ', Nissan.price)
+nissan = Nissan()
+print('Vehicle stype: ', nissan.vehicle_type)
+print('Price: ', nissan.price)
