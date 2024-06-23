@@ -43,6 +43,7 @@ class Warehouse:
 
 class Vehicle:
     fuel_rate = 50
+    total_fuel = 0
 
     def __init__(self, model):
         self.model = model
@@ -53,10 +54,18 @@ class Vehicle:
 
     def tank_up(self):
         self.fuel += 1000
+        Vehicle.total_fuel += 1000
         print('{} заправился'.format(self.model))
+
+    def act(self):
+        if self.fuel <= 10:
+            self.tank_up()
+            return False
+        return True
 
 
 class Truck(Vehicle):
+    dead_time = 0
 
     def __init__(self, model, body_space=1000):
         super().__init__(model=model)
@@ -86,14 +95,16 @@ class Truck(Vehicle):
         print('{} выехал в путь'.format(self.model))
 
     def act(self):
-        if self.fuel <= 10:
-            self.tank_up()
-        elif isinstance(self.place, Road):
-            self.ride()
+        if super().act():
+            if isinstance(self.place, Road):
+                self.ride()
+            else:
+                Truck.dead_time += 1
 
 
 class AutoLoader(Vehicle):
     fuel_rate = 30
+    dead_time = 0
 
     def __init__(self, model, bucket_capacity=100, warehouse=None, role='loader'):
         super().__init__(model=model)
@@ -104,18 +115,19 @@ class AutoLoader(Vehicle):
 
     def __str__(self):
         res = super().__str__()
-        return res + 'груза {}'.format(self.truck)
+        return res + 'грузовик {}'.format(self.truck)
 
     def act(self):
-        if self.fuel <= 10:
-            self.tank_up()
-        elif self.truck is None:
-            self.truck = self.warehouse.get_next_truck()
-            print('{} взял в работу {}'.format(self.model, self.truck))
-        elif self.role == 'loader':
-            self.load()
-        else:
-            self.unload()
+        if super().act():
+            if self.truck is None:
+                self.truck = self.warehouse.get_next_truck()
+                print('{} взял в работу {}'.format(self.model, self.truck))
+            elif self.role == 'loader':
+                self.load()
+            else:
+                self.unload()
+            if self.truck is None:
+                AutoLoader.dead_time += 1
 
     def load(self):
         self.fuel -= self.fuel_rate
@@ -182,4 +194,6 @@ while piter.content < TOTAL_CARGO:
     cprint(moscow, color='cyan')
     cprint(piter, color='cyan')
 
-
+cprint('Всего затрачено {} топлива'.format(Vehicle.total_fuel), color='yellow')
+cprint('Общий простой грузовиков {} часов'.format(Truck.dead_time), color='yellow')
+cprint('Общий простой погрузчиков {} часов'.format(AutoLoader.dead_time), color='yellow')
