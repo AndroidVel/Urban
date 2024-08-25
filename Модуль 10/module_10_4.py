@@ -11,7 +11,6 @@ class Table:
         self.guest = None
 
 
-
 class Guest(Thread):
 
     def __init__(self, name):
