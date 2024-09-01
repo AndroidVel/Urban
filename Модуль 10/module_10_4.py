@@ -18,7 +18,7 @@ class Guest(Thread):
         self.name = name
 
     def run(self):
-        sleep(randrange(3, 10))
+        sleep(randrange(3, 5))
 
 
 class Cafe:
@@ -54,11 +54,23 @@ class Cafe:
                     table.guest = self.queue.get()
                     print(f'{table.guest.name} вышел(-ла) из очереди и сел(-а) за стол номер {table.number}')
                     table.guest.start()
+
+        while not self.tables_are_empty():
+            for table in self.tables:
+                if table.guest and not table.guest.is_alive():
+                    print(f'{table.guest.name} покушал(-а) и ушёл(ушла)')
+                    print(f'Стол номер {table.number} свободен')
+                    table.guest = None
+
+    def tables_are_empty(self):
+        result = True
         for table in self.tables:
-            if table.guest and not table.guest.is_alive():
-                print(f'{table.guest.name} покушал(-а) и ушёл(ушла)')
-                print(f'Стол номер {table.number} свободен')
-                table.guest = None
+            if table.guest is None:
+                result = True
+            else:
+                result = False
+                break
+        return result
 
 
 # Создание столов
