@@ -12,10 +12,11 @@ from random import randint
 stat = {}
 
 sequence = ''
+
 file_name = 'voina-i-mir.txt'
 with open(file_name, mode='r', encoding='cp1251') as file:
     for line in file:
-        file = file[:-1]
+        line = line[:-1]
         # print(line)
         for char in line:
             if sequence in stat:
@@ -42,7 +43,8 @@ for sequence, char_stats in stat.items():
 n = 1000
 printed = 0
 
-sequence = ' '
+sequence = '  '
+spaces_printed = 0
 while printed < n:
     char_stats = stat_for_generate[sequence]
     total = totals[sequence]
@@ -53,5 +55,11 @@ while printed < n:
         if dice <= pos:
             break
     print(char, end='')
+    if char == ' ':
+        spaces_printed += 1
+        if spaces_printed >= 10:
+            print()
+            spaces_printed = 0
+
     sequence = sequence[1:] + char
     printed += 1
