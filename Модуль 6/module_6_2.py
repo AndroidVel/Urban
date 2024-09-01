@@ -46,3 +46,4 @@ vehicle1.owner = 'Vasyok'
 
 # Проверяем что поменялось
 vehicle1.print_info()
+print(vehicle1.__dir__())
