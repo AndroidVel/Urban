@@ -3,7 +3,7 @@ class Animal:
     fed = False
 
     def __init__(self, name):
-        self. name = name
+        self.name = name
 
     def eat(self, food):
         if food.edible:
