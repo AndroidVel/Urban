@@ -1,0 +1,14 @@
+[2024-09-21 16:46:31,382] [WARNING]: Неверный тип данных для объекта Runner
+Traceback (most recent call last):
+  File "/home/user/PycharmProjects/Urban/Модуль 12/tests_12_4.py", line 27, in test_run
+    obj2 = rt_with_exceptions.Runner('Bob', 'speed')
+  File "/home/user/PycharmProjects/Urban/Модуль 12/rt_with_exceptions.py", line 8, in __init__
+    if speed > 0:
+TypeError: '>' not supported between instances of 'str' and 'int'
+[2024-09-21 16:46:31,382] [WARNING]: Неверная скорость для Runner
+Traceback (most recent call last):
+  File "/home/user/PycharmProjects/Urban/Модуль 12/tests_12_4.py", line 16, in test_walk
+    obj1 = rt_with_exceptions.Runner('Bob', -7)
+  File "/home/user/PycharmProjects/Urban/Модуль 12/rt_with_exceptions.py", line 11, in __init__
+    raise ValueError(f'Скорость не может быть отрицательной, сейчас {speed}')
+ValueError: Скорость не может быть отрицательной, сейчас -7
