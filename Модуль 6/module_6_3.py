@@ -12,7 +12,9 @@ class Car:
 class Nissan(Vehicle, Car):
     price = 1500000
     vehicle_type = 'civil_car'
-    horse_power = 500
+
+    def horse_power(self):
+        return 500
 
 
 nissan = Nissan()
