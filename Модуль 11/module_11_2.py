@@ -4,7 +4,7 @@ from pprint import pprint
 
 def introspection_info(obj):
     dict_ = {'type': type(obj),
-             'attributes': dir(obj),
+             'attributes': vars(obj),
              'methods': inspect.getmembers(obj, inspect.ismethod),
              'module': inspect.getmodule(obj),
              'is callable': callable(obj)}
